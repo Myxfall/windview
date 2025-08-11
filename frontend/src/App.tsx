@@ -1,10 +1,9 @@
-import { useState, useEffect } from 'react'
+import { useEffect } from 'react'
 import './App.css'
 
 import widgets from "./widgets.json"
 
 function App() {
-    const [count, setCount] = useState(0)
 
     useEffect(() => {
         widgets.forEach(params => {
@@ -22,7 +21,7 @@ function App() {
            <div>
                 <h1>Windguru Forecast</h1>
                 {
-                    widgets.map((widget, index) =>
+                    widgets.map((widget) =>
                         <div id={widget.uid} />
                     )
                 }
