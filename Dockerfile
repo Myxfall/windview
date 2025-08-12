@@ -33,33 +33,21 @@
 #CMD ["gunicorn", "-b", "0.0.0.0:5000", "app:app"]
 
 
-# Use an official Node image to build the React app
-FROM node:18-alpine AS build
 
-# Set working directory
+# Build Vite React frontend
+FROM node:18-alpine as client-builder
 WORKDIR /app/frontend
-
-# Copy package files and install dependencies
-COPY frontend/package.json frontend/package-lock.json* ./ 
+COPY frontend/package*.json ./
 RUN npm install
-
-# Copy rest of the app source code
-COPY frontend/ ./
-
-# Build the production-ready app
+COPY frontend ./
 RUN npm run build
 
-# Serve the built app with a lightweight web server (nginx)
-FROM nginx:alpine
+# Python Flask backend
+FROM python:3.10-slim as server
+WORKDIR /app/backend
+COPY backend ./backend
+COPY --from=client-builder /app/frontend/dist ./frontend/dist
+RUN pip install flask
 
-# Copy built files from the build stage
-COPY --from=build /app/frontend/dist /usr/share/nginx/html
-
-# Copy custom nginx config if needed (optional)
-# COPY nginx.conf /etc/nginx/conf.d/default.conf
-
-# Expose port 80
-EXPOSE 80
-
-# Start nginx server
-CMD ["nginx", "-g", "daemon off;"]
+EXPOSE 5000
+CMD ["python", "backend/app.py"]
