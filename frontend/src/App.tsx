@@ -18,14 +18,12 @@ function App() {
 
     return (
         <>
-           <div>
-                <h1>Windguru Forecast</h1>
-                {
-                    widgets.map((widget) =>
-                        <div id={widget.uid} />
-                    )
-                }
-           </div>
+            <h1>Windguru Forecast</h1>
+            <div>
+                {widgets.map((widget) =>
+                    <div id={widget.uid} />
+                )}
+            </div>
         </>
     )
 }
