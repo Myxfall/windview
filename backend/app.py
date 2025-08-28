@@ -18,6 +18,7 @@ def serve_frontend(path):
     else:
         return send_from_directory(app.static_folder, 'index.html')
 
+
 #@app.route('/api/alerts')
 #def alerts():
 #    with open("config.yaml") as f:
