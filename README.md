@@ -1,54 +1,51 @@
 # windview
 Windguru agglomerator for spots overview and wind condition notification
 
-## Development
+## Running Locally
 
-1. **Install dependencies**
-   ```sh
-   # Node.js example
-   npm install
-   # Python example
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/yourusername/windview.git
+   cd windview
+   ```
+
+2. **Install dependencies:**
+   ```bash
+   # If using Python
    pip install -r requirements.txt
+
+   # If using Node.js
+   npm install
    ```
 
-2. **Run in development mode**
-   ```sh
-   # Node.js
+3. **Start the application:**
+   ```bash
+   # Python example
+   python main.py
+
+   # Node.js example
    npm run dev
-   # Python
-   python main.py
    ```
 
-## Production
+## Running with Docker Compose
 
-1. **Build the project**
-   ```sh
-   # Node.js
-   npm run build
-   # Python: usually no build step
+1. **Ensure Docker and Docker Compose are installed.**
+
+2. **Start the services:**
+   ```bash
+   docker compose up --build
    ```
 
-2. **Run in production**
-   ```sh
-   # Node.js
-   npm start
-   # Python
-   python main.py
-   ```
+3. **Access the application:**
+   - Visit [http://localhost:5000](http://localhost:5000) (or the port specified in your `docker-compose.yml`).
 
-## Docker
+## Configuration
 
-1. **Build the Docker image**
-   ```sh
-   docker build -t windview .
-   ```
+- Edit configuration files as needed (e.g., `.env`, `config.yaml`).
 
-2. **Run the Docker container**
-   ```sh
-   docker run --rm -p 8080:8080 windview
-   ```
+## Features
 
-   Adjust the port mapping as needed.
+- Aggregates wind conditions from Windguru for multiple spots.
+- Sends notifications based on wind conditions.
 
----
-*Replace language-specific commands with your stack's actual commands
+## License

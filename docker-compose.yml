@@ -2,12 +2,10 @@
 version: "3.9"
 services:
   wind-alert:
-    build: .
+    build: 
+      context: .
+      dockerfile: Dockerfile
     ports:
       - "5000:5000"
-      - "3000:80"
-      - "5173:5173"
-    volumes:
-      - ./backend/config.yaml:/app/config.yaml
     environment:
       - PYTHONUNBUFFERED=1
