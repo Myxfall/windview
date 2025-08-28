@@ -5,7 +5,7 @@ Windguru agglomerator for spots overview and wind condition notification
 
 1. **Clone the repository:**
    ```bash
-   git clone https://github.com/yourusername/windview.git
+   git clone https://github.com/myxfall/windview.git
    cd windview
    ```
 
